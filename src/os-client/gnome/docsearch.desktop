@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=DocSearch
+Comment=Demonstrates JavaFX
+Exec=/usr/bin/docsearch
+Icon=/usr/share/jb/icons/docsearch.png
+Terminal=false
+

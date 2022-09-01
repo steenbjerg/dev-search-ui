@@ -1,0 +1,159 @@
+plugins {
+  id 'application'
+  id 'org.openjfx.javafxplugin' version '0.0.10'
+  id 'com.gluonhq.gluonfx-gradle-plugin' version '1.0.12'
+}
+
+ext {
+	libraryVersions = [
+		slf4j: "1.7.25",
+		logback: "1.2.3",
+	]
+}
+
+repositories {
+	mavenCentral()
+	maven {
+		url "https://maven.repository.redhat.com/earlyaccess/all"
+	}
+}
+
+sourceSets {
+	main {
+		java {
+			srcDir "src/main/gen-src-wizard"
+		}
+	}
+}
+
+group "dk.stonemountain.demo"
+
+javafx {
+    version = "18.0.2"
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.base', 'javafx.web']
+}
+
+dependencies {
+	implementation "org.slf4j:slf4j-api:${libraryVersions.slf4j}"
+	implementation "org.slf4j:jul-to-slf4j:${libraryVersions.slf4j}"
+	implementation "ch.qos.logback:logback-core:${libraryVersions.logback}"
+	implementation "ch.qos.logback:logback-classic:${libraryVersions.logback}"
+
+	implementation "org.eclipse:yasson:2.0.4"
+	
+	implementation "org.openjfx:javafx-base:{javafx.version}"
+	implementation "org.openjfx:javafx-controls:{javafx.version}"
+	implementation "org.openjfx:javafx-fxml:{javafx.version}"
+
+//	implementation "org.jfxtras:jmetro:11.6.15"
+}
+
+mainClassName =  "dk.stonemountain.business.ui.Main"
+
+gluonfx {
+	enableSwRendering = true
+    
+	bundlesList = [] //"hellofx.hello"]
+
+    reflectionList = [
+    	// --- Types referenced from .fxml files
+        "javafx.geometry.Side",
+    	"javafx.fxml.FXMLLoader", 
+		"javafx.geometry.Insets",
+        "javafx.scene.control.Button",
+        "javafx.scene.control.CheckBox",
+        "javafx.scene.control.ChoiceBox",
+        "javafx.scene.control.DatePicker",
+        "javafx.scene.control.ContextMenu",
+		"javafx.scene.control.Hyperlink",
+        "javafx.scene.control.Label",
+        "javafx.scene.control.ListView",
+        "javafx.scene.control.Menu",
+        "javafx.scene.control.MenuBar",
+        "javafx.scene.control.MenuItem",
+		"javafx.scene.control.PasswordField",
+		"javafx.scene.control.RadioButton",
+		"javafx.scene.control.RadioMenuItem",
+		"javafx.scene.control.Separator",
+		"javafx.scene.control.SeparatorMenuItem",
+		"javafx.scene.control.SplitPane",
+		"javafx.scene.control.Tab",
+		"javafx.scene.control.TableColumn",
+		"javafx.scene.control.TableColumnBase",
+		"javafx.scene.control.TableView",
+		"javafx.scene.control.TabPane",
+		"javafx.scene.control.TextField",
+		"javafx.scene.control.TextArea",
+		"javafx.scene.control.TitledPane",
+		"javafx.scene.control.ToggleGroup",
+		"javafx.scene.layout.AnchorPane",
+		"javafx.scene.layout.BorderPane",
+		"javafx.scene.layout.ColumnConstraints",
+		"javafx.scene.layout.GridPane",
+		"javafx.scene.layout.HBox",
+		"javafx.scene.layout.VBox",
+		"javafx.scene.layout.Pane",
+		"javafx.scene.layout.Region",
+		"javafx.scene.layout.RowConstraints",
+		"javafx.scene.paint.Color",
+		"javafx.scene.text.Font",
+
+        "dk.stonemountain.business.ui.DocSearchApplication",
+        "dk.stonemountain.business.ui.ApplicationController",
+        "dk.stonemountain.business.ui.about.AboutDialog",
+        "dk.stonemountain.business.ui.about.IssueDialog",
+        "dk.stonemountain.business.ui.about.ShowDataDialog",
+        "dk.stonemountain.business.ui.about.ShowDataDialog",
+		"dk.stonemountain.business.ui.installer.UpdateDialog",
+		"dk.stonemountain.business.ui.messages.MessageDialog",
+		"dk.stonemountain.business.ui.messages.MessageCell",
+
+		// --- JSON DTOs
+		"dk.stonemountain.business.ui.installer.backend.VersionInformation",
+
+        // cd src/main/gen-src-wizard/bff/dk/jyskebank/outbound/bff/dto
+        // ls -1 | sed 's/.java/",/g;s/^/        "dk.jyskebank.outbound.bff.dto./g;'
+        
+        // From enums - by hand
+
+		// --- Logger classes (referenced in logback configuration, prolly)
+        "ch.qos.logback.classic.encoder.PatternLayoutEncoder",
+        "ch.qos.logback.classic.pattern.DateConverter",
+        "ch.qos.logback.classic.pattern.LevelConverter",
+        "ch.qos.logback.classic.pattern.LineSeparatorConverter",
+        "ch.qos.logback.classic.pattern.LoggerConverter",
+        "ch.qos.logback.classic.pattern.MessageConverter",
+        "ch.qos.logback.classic.pattern.ThreadConverter",
+        "ch.qos.logback.classic.filter.ThresholdFilter",
+        "ch.qos.logback.core.ConsoleAppender",
+        "ch.qos.logback.core.rolling.helper.DateTokenConverter",
+        "ch.qos.logback.core.rolling.helper.IntegerTokenConverter",
+        "ch.qos.logback.core.rolling.RollingFileAppender",
+        "ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy",
+        "ch.qos.logback.core.util.FileSize",
+        
+        "java.util.ArrayList",
+		"java.lang.String",
+		"com.sun.glass.ui.CommonDialogs",
+    ]
+
+    resourcesList = [
+    	"logback.xml",
+		"icons/.*",
+    	"fxml/.*",    	
+    ]
+
+    compilerArgs = ["--report-unsupported-elements-at-runtime", "--allow-incomplete-classpath" /*, "--no-fallback"*/ ]
+}
+
+// tasks.nativeCompile.doFirst {
+// 	def javaHome = System.getenv("JAVA_HOME")
+// 	def graalvmHome = System.getenv("GRAALVM_HOME")
+// 	if (!javaHome.equals(graalvmHome)) {
+// 		println "========================================================"
+// 		println "=== You need to download and unpack https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.3.0/graalvm-ce-java11-linux-amd64-21.3.0.tar.gz"
+// 		println "=== Finally make sure GRAALVM_HOME and JAVA_HOME points to the unpacked folder."
+// 		println "========================================================"
+// 		throw new Exception("Bad VM");
+// 	}
+// }
