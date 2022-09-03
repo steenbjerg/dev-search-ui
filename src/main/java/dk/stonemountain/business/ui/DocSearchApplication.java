@@ -40,7 +40,7 @@ public class DocSearchApplication extends Application {
         Parent rootNode = loader.load();
 
         log.trace("Showing JFX scene");
-        Scene scene = new Scene(rootNode, 800, 800);
+        Scene scene = new Scene(rootNode, 1100, 800);
 
         scene.getStylesheets().add("dark.css");
         // JMetro jmetro = new JMetro(Style.DARK);
