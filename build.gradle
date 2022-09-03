@@ -109,7 +109,7 @@ gluonfx {
 
 		// --- JSON DTOs
 		"dk.stonemountain.business.ui.installer.backend.VersionInformation",
-		"dk.stonemountain.business.ui.events.SearchResultDTO",
+		"dk.stonemountain.business.ui.events.dto.SearchResultDTO",
 		"dk.stonemountain.business.ui.search.backend.SearchResultDTO",
 		"dk.stonemountain.business.ui.search.backend.SiteDTO",
 
