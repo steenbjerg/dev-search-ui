@@ -68,6 +68,7 @@ gluonfx {
 		"javafx.scene.control.Hyperlink",
         "javafx.scene.control.Label",
         "javafx.scene.control.ListView",
+        "javafx.scene.control.ListCell",
         "javafx.scene.control.Menu",
         "javafx.scene.control.MenuBar",
         "javafx.scene.control.MenuItem",
@@ -103,13 +104,14 @@ gluonfx {
         "dk.stonemountain.business.ui.about.AboutDialog",
         "dk.stonemountain.business.ui.about.IssueDialog",
         "dk.stonemountain.business.ui.about.ShowDataDialog",
-        "dk.stonemountain.business.ui.about.ShowDataDialog",
 		"dk.stonemountain.business.ui.installer.UpdateDialog",
-		"dk.stonemountain.business.ui.messages.MessageDialog",
-		"dk.stonemountain.business.ui.messages.MessageCell",
+		"dk.stonemountain.business.ui.search.SearchResultCell",
 
 		// --- JSON DTOs
 		"dk.stonemountain.business.ui.installer.backend.VersionInformation",
+		"dk.stonemountain.business.ui.events.SearchResultDTO",
+		"dk.stonemountain.business.ui.search.backend.SearchResultDTO",
+		"dk.stonemountain.business.ui.search.backend.SiteDTO",
 
         // cd src/main/gen-src-wizard/bff/dk/jyskebank/outbound/bff/dto
         // ls -1 | sed 's/.java/",/g;s/^/        "dk.jyskebank.outbound.bff.dto./g;'
