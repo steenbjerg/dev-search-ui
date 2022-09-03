@@ -22,11 +22,11 @@ jobs:
         echo "##[set-output name=time;]$(echo $(date))"
     - name: imprint buildinfo
       run: |
-        sed -i "s/##VERSION##/${{ steps.buildinfo.outputs.version }}/g" 'src/main/java/dk/jyskebank/business/ui/Version.java'
-        sed -i "s/##BUILD_TIME##/${{ steps.buildinfo.outputs.time }}/g" 'src/main/java/dk/jyskebank/business/ui/Version.java'
-        sed -i "s/##SHA##/${{ steps.buildinfo.outputs.sha }}/g" 'src/main/java/dk/jyskebank/business/ui/Version.java'
+        sed -i "s/##VERSION##/${{ steps.buildinfo.outputs.version }}/g" 'src/main/java/dk/stonemountain/business/ui/Version.java'
+        sed -i "s/##BUILD_TIME##/${{ steps.buildinfo.outputs.time }}/g" 'src/main/java/dk/stonemountain/business/ui/Version.java'
+        sed -i "s/##SHA##/${{ steps.buildinfo.outputs.sha }}/g" 'src/main/java/dk/stonemountain/business/ui/Version.java'
     - name: print buildinfo in file
-      run: cat 'src/main/java/dk/jyskebank/business/ui/Version.java'
+      run: cat 'src/main/java/dk/stonemountain/business/ui/Version.java'
     - uses: gluonhq/setup-graalvm@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
