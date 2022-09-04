@@ -138,6 +138,7 @@ gluonfx {
         "java.util.ArrayList",
 		"java.lang.String",
 		"com.sun.glass.ui.CommonDialogs",
+		"jdk.internal.misc.Unsafe",
     ]
 
     resourcesList = [
