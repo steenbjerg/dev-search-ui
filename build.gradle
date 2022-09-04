@@ -63,6 +63,7 @@ gluonfx {
         "javafx.scene.control.Button",
         "javafx.scene.control.CheckBox",
         "javafx.scene.control.ChoiceBox",
+        "javafx.scene.control.ComboBox",
         "javafx.scene.control.DatePicker",
         "javafx.scene.control.ContextMenu",
 		"javafx.scene.control.Hyperlink",
