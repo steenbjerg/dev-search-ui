@@ -1,7 +1,7 @@
 plugins {
   id 'application'
-  id 'org.openjfx.javafxplugin' version '0.0.10'
-  id 'com.gluonhq.gluonfx-gradle-plugin' version '1.0.12'
+  id 'org.openjfx.javafxplugin' version '0.0.13'
+  id 'com.gluonhq.gluonfx-gradle-plugin' version '1.0.15'
 }
 
 ext {
