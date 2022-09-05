@@ -136,6 +136,7 @@ gluonfx {
         "ch.qos.logback.core.util.FileSize",
         
         "java.util.ArrayList",
+        "java.util.List",
 		"java.lang.String",
 		"com.sun.glass.ui.CommonDialogs",
 		"jdk.internal.misc.Unsafe",
