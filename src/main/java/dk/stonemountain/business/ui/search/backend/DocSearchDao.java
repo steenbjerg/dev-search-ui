@@ -20,7 +20,7 @@ import dk.stonemountain.business.ui.util.jaxrs.JsonbHelper;
 public class DocSearchDao {
     private static final Logger logger = LoggerFactory.getLogger(DocSearchDao.class);
 
-    public CompletableFuture<List<SiteDTO>> getSites() {
+    public CompletableFuture<List<SiteDTO>> getSitesAsync() {
 		String url = ApplicationContainer.getInstance().getCurrentBackend().getBffServiceUrl();
 		url = url + "/sites";
 		logger.debug("Invoking url: {}", url);
@@ -34,6 +34,22 @@ public class DocSearchDao {
 		return client.sendAsync(request, BodyHandlers.ofString())
 			.thenApply(HttpResponse::body)
 			.thenApply(b -> JsonbHelper.fromJson(b, new ArrayList<SiteDTO>(){}.getClass().getGenericSuperclass())); // NOSONAR
+	}
+
+    public List<SiteDTO> getSites() {
+		String url = ApplicationContainer.getInstance().getCurrentBackend().getBffServiceUrl();
+		url = url + "/sites";
+		logger.debug("Invoking url: {}", url);
+		HttpRequest request = HttpRequest.newBuilder()
+			.uri(URI.create(url))
+			.header("Accept", "application/json")
+			.build();
+		
+		HttpClient client = ApplicationContainer.getInstance().getCurrentBackend().getHttpClientBuilder().build();
+		
+		String body = client.send(request, BodyHandlers.ofString())
+			.body();
+		return JsonbHelper.fromJson(body, new ArrayList<SiteDTO>(){}.getClass().getGenericSuperclass()); // NOSONAR
 	}
 
     public CompletableFuture<List<SearchResultDTO>> search(String s, String query) {

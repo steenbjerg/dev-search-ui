@@ -90,8 +90,9 @@ public class SitesService extends Service<List<Site>> {
 		@Override
 		protected List<Site> call() throws Exception {
 			log.trace("Starting to fetch sites");
-			CompletableFuture<List<SiteDTO>> siteDTOFuture = dao.getSites();
-			List<SiteDTO> siteDTOs = siteDTOFuture.get();
+			// CompletableFuture<List<SiteDTO>> siteDTOFuture = dao.getSites();
+			// List<SiteDTO> siteDTOs = siteDTOFuture.get();
+			List<SiteDTO> siteDTOs = dao.getSites();
 			log.trace("Fetched sites: {}", siteDTOs);
 			List<Site> result = siteDTOs.stream()
 				.map(SiteMapper::map)
