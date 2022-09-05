@@ -47,9 +47,12 @@ public class DocSearchDao {
 		
 		HttpClient client = ApplicationContainer.getInstance().getCurrentBackend().getHttpClientBuilder().build();
 		
-		String body = client.send(request, BodyHandlers.ofString())
-			.body();
-		return JsonbHelper.fromJson(body, new ArrayList<SiteDTO>(){}.getClass().getGenericSuperclass()); // NOSONAR
+		try {
+			String body = client.send(request, BodyHandlers.ofString()).body();
+			return JsonbHelper.fromJson(body, new ArrayList<SiteDTO>(){}.getClass().getGenericSuperclass()); // NOSONAR
+		} catch (Exception e) {
+			throw new RuntimeException("communication failure", e);
+		}
 	}
 
     public CompletableFuture<List<SearchResultDTO>> search(String s, String query) {
