@@ -31,7 +31,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        graalvm: 'latest'
+        graalvm: '22.3.0-dev-20220902_0358'
         jdk: 'java17'
     - run: java -version
     - name: Update apt cache
