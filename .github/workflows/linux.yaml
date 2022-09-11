@@ -29,7 +29,7 @@ jobs:
       run: cat 'src/main/java/dk/stonemountain/business/ui/Version.java'
 
       
-    - uses: DeLaGuardo/setup-graalvm
+    - uses: DeLaGuardo/setup-graalvm@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
