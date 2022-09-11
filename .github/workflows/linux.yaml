@@ -33,7 +33,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        graalvm: 'latest'
+        graalvm: '22.2.0'
         java: 'java17'
 #    - uses: gluonhq/setup-graalvm@master
 #      env:
