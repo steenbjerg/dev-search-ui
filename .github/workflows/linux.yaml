@@ -27,12 +27,20 @@ jobs:
         sed -i "s/##SHA##/${{ steps.buildinfo.outputs.sha }}/g" 'src/main/java/dk/stonemountain/business/ui/Version.java'
     - name: print buildinfo in file
       run: cat 'src/main/java/dk/stonemountain/business/ui/Version.java'
-    - uses: gluonhq/setup-graalvm@master
+
+      
+    - uses: DeLaGuardo/setup-graalvm
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         graalvm: 'latest'
         jdk: 'java17'
+#    - uses: gluonhq/setup-graalvm@master
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      with:
+#        graalvm: 'latest'
+#        jdk: 'java17'
     - run: java -version
     - name: Update apt cache
       run: sudo apt update
