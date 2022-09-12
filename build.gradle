@@ -111,6 +111,7 @@ gluonfx {
 		"dk.stonemountain.business.ui.events.dto.SearchResultDTO",
 		"dk.stonemountain.business.ui.search.backend.SearchResultDTO",
 		"dk.stonemountain.business.ui.search.backend.SiteDTO",
+		"dk.stonemountain.business.ui.search.backend.SitesDTO",
 
         // cd src/main/gen-src-wizard/bff/dk/jyskebank/outbound/bff/dto
         // ls -1 | sed 's/.java/",/g;s/^/        "dk.jyskebank.outbound.bff.dto./g;'

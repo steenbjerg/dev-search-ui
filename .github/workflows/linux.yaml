@@ -29,18 +29,18 @@ jobs:
       run: cat 'src/main/java/dk/stonemountain/business/ui/Version.java'
 
       
-    - uses: DeLaGuardo/setup-graalvm@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        graalvm: '22.2.0'
-        java: 'java17'
-#    - uses: gluonhq/setup-graalvm@master
+#    - uses: DeLaGuardo/setup-graalvm@master
 #      env:
 #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #      with:
-#        graalvm: 'latest'
-#        jdk: 'java17'
+#        graalvm: '22.2.0'
+#        java: 'java17'
+    - uses: gluonhq/setup-graalvm@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        graalvm: 'latest'
+        jdk: 'java17'
     - run: java -version
     - name: Update apt cache
       run: sudo apt update

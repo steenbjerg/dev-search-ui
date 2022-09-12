@@ -36,7 +36,7 @@ public class DocSearchDao {
 			.thenApply(b -> JsonbHelper.fromJson(b, new ArrayList<SiteDTO>(){}.getClass().getGenericSuperclass())); // NOSONAR
 	}
 
-    public List<SiteDTO> getSites() {
+    public SitesDTO getSites() {
 		String url = ApplicationContainer.getInstance().getCurrentBackend().getBffServiceUrl();
 		url = url + "/sites";
 		logger.debug("Invoking url: {}", url);
@@ -49,7 +49,7 @@ public class DocSearchDao {
 		
 		try {
 			String body = client.send(request, BodyHandlers.ofString()).body();
-			return JsonbHelper.fromJson(body, new ArrayList<SiteDTO>(){}.getClass().getGenericSuperclass()); // NOSONAR
+			return JsonbHelper.fromJson(body, SitesDTO.class); // NOSONAR
 		} catch (Exception e) {
 			throw new RuntimeException("communication failure", e);
 		}

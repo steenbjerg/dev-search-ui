@@ -2,13 +2,12 @@ package dk.stonemountain.business.ui.search;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import dk.stonemountain.business.ui.search.backend.DocSearchDao;
-import dk.stonemountain.business.ui.search.backend.SiteDTO;
+import dk.stonemountain.business.ui.search.backend.SitesDTO;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
@@ -92,9 +91,9 @@ public class SitesService extends Service<List<Site>> {
 			log.trace("Starting to fetch sites");
 			// CompletableFuture<List<SiteDTO>> siteDTOFuture = dao.getSites();
 			// List<SiteDTO> siteDTOs = siteDTOFuture.get();
-			List<SiteDTO> siteDTOs = dao.getSites();
-			log.trace("Fetched sites: {}", siteDTOs);
-			List<Site> result = siteDTOs.stream()
+			SitesDTO sitesDTO = dao.getSites();
+			log.trace("Fetched sites: {}", sitesDTO);
+			List<Site> result = sitesDTO.sites.stream()
 				.map(SiteMapper::map)
 				.toList();
 			log.trace("Sites fetched: {}", result);
