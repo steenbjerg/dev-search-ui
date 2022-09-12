@@ -93,7 +93,10 @@ public class SitesService extends Service<List<Site>> {
 			// List<SiteDTO> siteDTOs = siteDTOFuture.get();
 			SitesDTO sitesDTO = dao.getSites();
 			log.trace("Fetched sites: {}", sitesDTO);
-			List<Site> result = sitesDTO.sites.stream()
+			if (sitesDTO == null || sitesDTO.sites() == null) {
+				throw new RuntimeException("No sites returned");
+			}
+			List<Site> result = sitesDTO.sites().stream()
 				.map(SiteMapper::map)
 				.toList();
 			log.trace("Sites fetched: {}", result);
