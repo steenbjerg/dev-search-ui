@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import dk.stonemountain.business.ui.about.AboutDialog;
+import dk.stonemountain.business.ui.about.InfoDialog;
 import dk.stonemountain.business.ui.about.IssueDialog;
 import dk.stonemountain.business.ui.installer.UpdateDialog;
 import dk.stonemountain.business.ui.search.SearchResult;
@@ -14,13 +15,13 @@ import dk.stonemountain.business.ui.search.SearchResultCell;
 import dk.stonemountain.business.ui.search.SearchService;
 import dk.stonemountain.business.ui.search.Site;
 import dk.stonemountain.business.ui.search.SitesService;
+import dk.stonemountain.business.ui.util.gui.ClientRuntime;
 import dk.stonemountain.business.ui.util.gui.DialogHelper;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
-import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -153,6 +154,8 @@ public class ApplicationController {
 	@FXML
     void doShowInfo(ActionEvent event) {
 		log.error("show info");
+		var infoDialog = new InfoDialog(time.getScene().getWindow(), "http://localhost:8080/searchInfo.html", "Search Information","How to search");
+		infoDialog.showAndWait();
     }
 
 	@FXML

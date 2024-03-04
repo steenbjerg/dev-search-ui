@@ -5,10 +5,10 @@ import java.util.List;
 import jakarta.json.bind.annotation.JsonbProperty;
 
 public record SearchResultDTO(
-    String id,
+    Long id,
     @JsonbProperty("site-id")
-    String siteId,
+    Long siteId,
     String url,
     String title,
-    List<FieldHitDTO> highlights) {
-}
+    List<String> highlights) {
+ }

@@ -57,7 +57,7 @@ public class DocSearchDao {
 
     public CompletableFuture<List<SearchResultDTO>> search(String s, String query) {
 		String url = ApplicationContainer.getInstance().getCurrentBackend().getBffServiceUrl();
-		url = url + "/sites/{siteName}/pages/full-text-search?query={query}".replace("{siteName}", s).replace("{query}", URLEncoder.encode(query, StandardCharsets.UTF_8));
+		url = url + "/sites/{siteName}/pages/search-by-text?pattern={pattern}".replace("{siteName}", s.replace(" ", "%20")).replace("{pattern}", URLEncoder.encode(query, StandardCharsets.UTF_8));
 		logger.debug("Invoking url: {}", url);
 		HttpRequest request = HttpRequest.newBuilder()
 			.uri(URI.create(url))

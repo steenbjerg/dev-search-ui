@@ -4,3 +4,41 @@ body {
     overflow-x: hidden;
     overflow-y: hidden;
 }
+
+/* ul {
+    list-style-type: none
+} */
+
+ul li {
+    position: relative;
+	padding-bottom: 10px;
+    /* display: grid; */
+    /* grid-template-columns: 20px auto;
+    justify-content: start;
+    align-items: center; */
+}
+
+ul li:before{
+    content: '';
+    position: absolute;
+    border-right:2px solid black;
+    border-bottom:2px solid black;
+    width:10px;
+    height:10px;
+    top: calc(50% - 4px);
+    left: -20px;
+    transform: translateY(-50%) rotate(-45deg);
+}
+
+/* li::before {
+    content: "\00BB";
+} */
+
+#arrow {
+    border-right:2px solid black;
+    border-bottom:2px solid black;
+    width:10px;
+    height:10px;
+    transform: rotate(-45deg);
+    margin-top:40px;
+}

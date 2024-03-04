@@ -56,8 +56,10 @@ public class DocSearchApplication extends Application {
         
         log.trace("Image: {}, {}", this.getClass().getResource("/icons/java_64.png"), this.getClass().getResourceAsStream("/icons/java_64.png"));
         stage.getIcons().add(new Image(this.getClass().getResourceAsStream("/icons/java_64.png")));
-        stage.setTitle("Stonemountain Demo FX applications");
+        stage.setTitle("Doc-Search - Stonemountain Production");
         stage.setScene(scene);
+        stage.setMinWidth(1000);
+        stage.setMinHeight(600);
         stage.show();
     }
 }

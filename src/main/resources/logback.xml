@@ -11,6 +11,9 @@
 
 	<appender name="FILE-LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${java.io.tmpdir}/logs/docsearch/application.log</file>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+	        <level>INFO</level>
+	    </filter>
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
 			<Pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{5} - %msg%n</Pattern>
 		</encoder>
